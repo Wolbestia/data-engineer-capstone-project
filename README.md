@@ -54,7 +54,7 @@ To execute the ETL you have to simply execute the main file with:
 ```
 python3 etl.py
 ```
-The script contains log info about the execution process and when all the data laked is created it runs a few data quality checks. If any of the the data quality checks fails it's displayed on the execution of the script. 
+The script contains log info about the execution process and when full schema is created it runs a few data quality checks. If any of the the data quality checks fails it's displayed on the execution of the script. 
 
 The dataset is very huge and in the first execution of the script it may take a while to create all the tables in a local Spark cluster. To test the script you could replace the write sentences: 
 ```
