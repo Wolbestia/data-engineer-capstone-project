@@ -31,15 +31,12 @@ def main():
 
     full_bowl_roster_df, full_stats_df = etl_functions.create_full_weeks_dataframe(spark)
 
-    # Vamos a necesitar el roster_df para poder filtrar por posiciones a la hora de hacer las dimension tables de estadísticas por jugador
     roster_df = etl_functions.create_roster_dataframe(spark, full_bowl_roster_df)
 
-    # Separadas en dos funciones que llaman a otras, se crean las dimensiones del ataque y la defensa
     deffense_dfs = etl_functions.create_deffense_dimensions(spark, full_stats_df)
     offense_dfs = etl_functions.create_offense_dimensions(spark, full_stats_df)
 
-    #TODO: Uncomment this:
-    # etl_functions.data_quality_checks(spark, roster_df, deffense_dfs, offense_dfs)
+    etl_functions.data_quality_checks(spark, roster_df, deffense_dfs, offense_dfs)
 
 if __name__ == "__main__":
     main()

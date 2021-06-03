@@ -100,36 +100,28 @@ def create_deffense_dimensions(spark, full_stats_df):
     # linebackers dimension
     lbs_df = def_play_stats_df.where(col("position").isin(linebackers))
     print(" --- LB STATS ---")
-    print(lbs_df.printSchema())
-    """
     lbs_df.repartition(col("team"), col("game_id")) \
         .write \
         .option("maxRecordsPerFile", 11) \
         .partitionBy("team", "game_id") \
         .parquet(os.path.join(output_data, 'lb_stats/lb_stats.parquet'), 'overwrite')
-    """
 
     # safeties dimension
     safeties_df = def_play_stats_df.where(col("position").isin(safeties))
-    print(" --- SAFETY STATS ---")
-    """
     safeties_df.repartition(col("team"), col("game_id")) \
         .write \
         .option("maxRecordsPerFile", 11) \
         .partitionBy("team", "game_id") \
-        .parquet(os.path.join(output_data, 'lb_stats/lb_stats.parquet'), 'overwrite')
-    """
+        .parquet(os.path.join(output_data, 'safeties_stats/safeties_stats.parquet'), 'overwrite')
 
     # cornerbacks dimension
     cbs_df = def_play_stats_df.where(col("position").isin(cornerbacks))
     print(" --- CB STATS ---")
-    """
     cbs_df.repartition(col("team"), col("game_id")) \
         .write \
         .option("maxRecordsPerFile", 11) \
         .partitionBy("team", "game_id") \
-        .parquet(os.path.join(output_data, 'lb_stats/lb_stats.parquet'), 'overwrite')
-    """
+        .parquet(os.path.join(output_data, 'cb_stats/cb_stats.parquet'), 'overwrite')
 
     return {'lbs': lbs_df, 'safeties': safeties_df, 'cbs': cbs_df}
 
@@ -169,14 +161,11 @@ def create_qb_dimensions(spark, full_stats_df, plays_df):
     qb_df = qb_play_stats_df.where("position = 'QB'")
 
     print("--- QB STATS ---")
-    print(qb_df.printSchema())
-    """
     qb_df.repartition(col("team"), col("game_id")) \
         .write \
         .option("maxRecordsPerFile", 11) \
         .partitionBy("team", "game_id") \
         .parquet(os.path.join(output_data, 'qb_stats/qb_stats.parquet'), 'overwrite')
-    """
 
     return qb_df
 
@@ -200,24 +189,19 @@ def create_receiver_dimensions(spark, full_stats_df, plays_df):
 
     te_df = receiver_play_stats_df.where("position = 'TE'")
     print("--- TE STATS ---")
-    print(te_df.printSchema())
-    """
     te_df.repartition(col("team"), col("game_id")) \
         .write \
         .option("maxRecordsPerFile", 11) \
         .partitionBy("team", "game_id") \
-        .parquet(os.path.join(output_data, 'qb_stats/qb_stats.parquet'), 'overwrite')
-    """
+        .parquet(os.path.join(output_data, 'te_stats/te_stats.parquet'), 'overwrite')
 
     wr_df = receiver_play_stats_df.where("position = 'WR'")
     print("--- WR STATS ---")
-    """
     wr_df.repartition(col("team"), col("game_id")) \
         .write \
         .option("maxRecordsPerFile", 11) \
         .partitionBy("team", "game_id") \
-        .parquet(os.path.join(output_data, 'qb_stats/qb_stats.parquet'), 'overwrite')
-    """
+        .parquet(os.path.join(output_data, 'wr_stats/wr_stats.parquet'), 'overwrite')
 
     return te_df, wr_df
 
