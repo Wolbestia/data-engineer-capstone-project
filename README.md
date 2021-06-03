@@ -84,5 +84,26 @@ Here, we can see who are the best quarterbacks in the first downs based on a lim
 ![qb_stats_first_down_def](https://user-images.githubusercontent.com/25299249/120519700-346ce680-c3d3-11eb-81c6-31bdbb8cfe5c.png)
 
 #### Blocking tight ends VS route-runners 
+Another real case scenario would be comparing the tight ends who run routes to catch the ball or those who usually block at the line of scrimmage. Here, we can see who are the tight ends that blocks the most and the ones that are used to run routes:
+
+![te_block_plays](https://user-images.githubusercontent.com/25299249/120638849-f4f4d780-c470-11eb-9f3f-d68b02f677f1.png)
+![te_route_plays](https://user-images.githubusercontent.com/25299249/120638855-f8885e80-c470-11eb-8f24-28a99a616352.png)
+
+#### The best QB tackler in the league
+It would be very interesting who is the best player at sacking the quarterback. In these case we would like to analyze all the deffense players since the safeties and cornerbacks can sack the QB too, although it's not common. 
+![deffense_sacks](https://user-images.githubusercontent.com/25299249/120639060-3eddbd80-c471-11eb-8a63-7667856b3e51.png)
+
+## Step 5: Description of the approach of different problems
+
+### If the data was increased by 100x
+If the data was increased by 100x I would upgrade the Spark cluster by building an EMR cluster on AWS. This way the ETL would be able to handle bigger data thanks to mapreduce and an efficient cluster configuration. 
+
+### If the pipelines were run on a daily basis by 7am
+If the ETL should be run on a daily basis I would build a data pipeline on Apache Airflow. This way I would be able to schedule the execution of the ETL and debug each task separately. 
+
+### If the database needed to be accessed by 100+ people
+Athena is a good and cheap option since they charge for each query executed. Howhever if the database needed to be accessed by a lot of people I would migrate the database to Amazon Redshift. Redshift would provide a better performance when accessed by a large amount of people and it's easier to monitor the performance and debug potential problems.
+
+
 
 
