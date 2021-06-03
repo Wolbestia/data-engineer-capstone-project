@@ -9,6 +9,9 @@ The goal of this project is to create an ETL and build a data lake populated wit
 
 The project uses two datasets. The first one is on /nflstatistics and is a JSON file with basic information about each player. This data was scrapped from the official NFL source of stats. In the other hand there's the second dataset which was given by the NFL itself in a Big Data contest. The dataset contains player tracking data, play, game and player level information about passing plays during the 2018 season. It has only plays where the ball was thrown, there was a penalty or the quarterback was sacked. The focus of the contest was pass coverage and for that reason there's no information about linemen.
 
+big-data-bowl dataset:
+https://www.kaggle.com/c/nfl-big-data-bowl-2021/overview
+
 ### Big data bowl file information
 
 - The games.csv contains both of the teams on each game of the season. 
@@ -49,6 +52,18 @@ As I progressed in my analysis of the project, I was refining the data model. Wi
 The fact table has specific info about each player that played a snap in the season. Then there's different dimension tables for each one of the main positions of a football team. Each one of them has which I considered interesting fields or statistics for that position. For example in the quarterback dimension it's interesting to have the down and how many yards were needed to take the first down. Another example would be the filter for each of the dimension's data, where the Cornerback or Linebacker dimensions have info about intercepted, sacked or incomplete plays. 
 
 ## Step 4: Run ETL to model the data
+
+### Prerequisites:
+- Python3
+- Pyspark fully configured. Here you can read how to install it: https://medium.com/tinghaochen/how-to-install-pyspark-locally-94501eefe421
+- - AWS S3 bucket to store the parquet files
+- nfl-big-data-bowl-2021 dataset from Kaggle
+- 
+To download the main dataset from Kaggle, you have to run:
+
+```
+kaggle competitions download -c nfl-big-data-bowl-2021
+```
 
 To execute the ETL you have to simply execute the main file with:
 ```
@@ -103,7 +118,3 @@ If the ETL should be run on a daily basis I would build a data pipeline on Apach
 
 ### If the database needed to be accessed by 100+ people
 Athena is a good and cheap option since they charge for each query executed. Howhever if the database needed to be accessed by a lot of people I would migrate the database to Amazon Redshift. Redshift would provide a better performance when accessed by a large amount of people and it's easier to monitor the performance and debug potential problems.
-
-
-
-
