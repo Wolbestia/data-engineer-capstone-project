@@ -56,9 +56,9 @@ The fact table has specific info about each player that played a snap in the sea
 ### Prerequisites:
 - Python3
 - Pyspark fully configured. Here you can read how to install it: https://medium.com/tinghaochen/how-to-install-pyspark-locally-94501eefe421
-- - AWS S3 bucket to store the parquet files
+- AWS S3 bucket to store the parquet files
 - nfl-big-data-bowl-2021 dataset from Kaggle
-- 
+
 To download the main dataset from Kaggle, you have to run:
 
 ```
