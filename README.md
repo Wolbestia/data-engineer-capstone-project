@@ -76,5 +76,13 @@ lbs_df.limit(100) \
 
 ### Real use case
 
-There's a final use case with a limited part of the dataset on Amazon Athena:
+Here's a final use case with a limited part of 50 players of the whole dataset on Amazon Athena:
+
+#### Best quarterbacks in the first downs
+Here, we can see who are the best quarterbacks in the first downs based on a limited portion of the dataset. The criteria applied is the most yards gained with a complete pass.
+
+![qb_stats_first_down_def](https://user-images.githubusercontent.com/25299249/120519700-346ce680-c3d3-11eb-81c6-31bdbb8cfe5c.png)
+
+#### Blocking tight ends VS route-runners 
+
 
